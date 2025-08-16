@@ -22,7 +22,7 @@ El repositorio esta organizado de la siguiente forma:
 git clone [link]
 ```
 
-2. luego ejecutar comando de docker para construir contenedores
+2. Ejecutar comando de docker para construir contenedores
 ```bash
 docker-compose build
 docker-compose up -d
@@ -41,7 +41,7 @@ docker-compose up --build -d
 
 
 > [!IMPORTANT] 
-> Si no aparecen las asignaciones en Grafana para el `service_01` y `service_02`, puede ser porque los archivos `.log` no tienen nada escrito porque estan recien creados,
+> Si no aparecen las asignaciones en Grafana para el `service_01` y `service_02`, puede ser porque los archivos `.log` no tienen nada escrito porque estan recién creados,
 > se debe puede hacer `curl http://localhost:5001` y `curl http://localhost:5002` para comprobar el sistema y con eso ya se tienen los logs necesarios para que Grafana
 > detecte los archivos.
 
