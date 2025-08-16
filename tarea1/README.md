@@ -9,7 +9,7 @@ Todo debe estar desplegado mediante docker-compose.
 
 El repositorio esta organizado de la siguiente forma:
 
-- `logs`: carpeta que almacena logs de contenedores, es un reflejo del archivo `*.log` de cada contenedor.
+- `logs`: carpeta que almacena logs de contenedores, es un reflejo del archivo `*.log` de cada contenedor (NO CARGADA EN EL REPO, se crea al construir contenedores).
 - `promtail`: tiene la configuración para leer los logs.
 - `service_01`
 - `service_02`
