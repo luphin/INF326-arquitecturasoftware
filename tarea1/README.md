@@ -40,10 +40,10 @@ docker-compose up --build -d
     - Menu lateral > Explore > hacer request (no aparecen los servicios la primera vez, se debe hacer un curl para que los `*.log` tengan algo escrito)
 
 
-    > [!IMPORTANT]  
-    > Si no aparecen las asignaciones en Grafana para el service_01 y service_02, puede ser porque los archivos `.log` no tienen nada escrito porque estan recien creados,
-    > se debe puede hacer `curl http://localhost:5001` y `curl http://localhost:5002` para comprobar el sistema y con eso ya se tendrian los logs necesarios para que Grafana
-    > detecte los archivos.
+> [!IMPORTANT] 
+> Si no aparecen las asignaciones en Grafana para el `service_01` y `service_02`, puede ser porque los archivos `.log` no tienen nada escrito porque estan recien creados,
+> se debe puede hacer `curl http://localhost:5001` y `curl http://localhost:5002` para comprobar el sistema y con eso ya se tienen los logs necesarios para que Grafana
+> detecte los archivos.
 
 4. Cargar datos en mongodb
 ```bash
