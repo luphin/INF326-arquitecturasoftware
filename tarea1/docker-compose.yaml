@@ -1,0 +1,83 @@
+services:
+  # Servicio 1
+  service_01:
+    build:
+      context: service_01
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"
+    volumes:
+      - ./service_01:/code
+      - ./logs/service_01:/logs
+    depends_on:
+      - service_01_mongodb
+
+  service_01_mongodb:
+    image: mongo:5.0
+    ports:
+      - "27018:27017"
+    volumes:
+      - service_01_mongodb_container:/data/db
+    logging:
+      driver: none
+
+  # Servicio 2
+  service_02:
+    build:
+      context: service_02
+      dockerfile: Dockerfile
+    ports:
+      - "5002:80"
+    volumes:
+      - ./service_02:/code
+      - ./logs/service_02:/logs
+    depends_on:
+      - service_02_mongodb
+
+  service_02_mongodb:
+    image: mongo:5.0
+    ports:
+      - "27019:27017"
+    volumes:
+      - service_02_mongodb_container:/data/db
+    logging:
+      driver: none
+    
+  # Loki (backend logs)
+  loki:
+    image: grafana/loki:3.2.1
+    container_name: loki
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+
+  # Promtail (recolecta logs)
+  promtail:
+    image: grafana/promtail:2.9.0
+    container_name: promtail
+    volumes:
+      - ./promtail/config.yml:/etc/promtail/config.yml
+      - ./logs:/var/log/app
+    command: -config.file=/etc/promtail/config.yml
+    depends_on:
+      - loki
+
+  # Grafana (visualizador)
+  grafana:
+    image: grafana/grafana:12.0.0
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - loki
+
+volumes:
+  service_01_mongodb_container:
+  service_02_mongodb_container:
+
+networks:
+  default:
+    name: tarea1
