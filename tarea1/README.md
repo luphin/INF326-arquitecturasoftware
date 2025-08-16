@@ -15,6 +15,10 @@ El repositorio esta organizado de la siguiente forma:
 - `service_02`
 - `docker-compose`: para crear los contenedores y volumenes con un solo comando.
 
+## Video
+
+- [Video explicativo sobre funcionamiento - youtube](https://youtu.be/nnX4ru2WQnM)
+
 ## Instrucciones
 
 1. Clonar repositorio
